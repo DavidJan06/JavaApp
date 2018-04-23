@@ -1,11 +1,11 @@
 /*
 Created		23. 04. 2018
 Modified		23. 04. 2018
-Project		
+Project		JavaApp
 Model		
 Company		
-Author		
-Version		
+Author		David Jan
+Version		0.2
 Database		mySQL 5 
 */
 
@@ -29,7 +29,7 @@ Create table ads (
 
 Create table categories (
 	id Serial NOT NULL,
-	category_id Bigint UNSIGNED,
+	category_id Bigint UNSIGNED NOT NULL,
 	name Varchar(50) NOT NULL,
 	description Text,
  Primary Key (id)) ENGINE = MyISAM;
@@ -43,7 +43,7 @@ Create table pictures (
 
 Create table orders (
 	id Serial NOT NULL,
-	id Bigint UNSIGNED NOT NULL,
+	user_id Bigint UNSIGNED NOT NULL,
 	date Date NOT NULL,
  Primary Key (id)) ENGINE = MyISAM;
 
@@ -62,7 +62,7 @@ Create table avatars (
  Primary Key (id)) ENGINE = MyISAM;
 
 
-Alter table orders add Foreign Key (id) references users (id) on delete  restrict on update  restrict;
+Alter table orders add Foreign Key (user_id) references users (id) on delete  restrict on update  restrict;
 Alter table avatars add Foreign Key (user_id) references users (id) on delete  restrict on update  restrict;
 Alter table pictures add Foreign Key (ad_id) references ads (id) on delete  restrict on update  restrict;
 Alter table ads_orders add Foreign Key (ad_id) references ads (id) on delete  restrict on update  restrict;
